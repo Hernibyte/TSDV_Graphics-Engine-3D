@@ -1,6 +1,7 @@
 #ifndef BASEGAME_H
 #define BASEGAME_H
 
+#include "ShapeCube.h"
 #include "Sprite.h"
 #include "Time.h"
 #include "Camera.h"

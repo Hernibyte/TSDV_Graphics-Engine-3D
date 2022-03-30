@@ -49,6 +49,12 @@
     <Filter Include="Source\Camera">
       <UniqueIdentifier>{6cdf7e15-989e-4ef0-b9ea-5f982819f74f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\ShapeCube">
+      <UniqueIdentifier>{937c20bd-6c99-4134-aebf-14045c003274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\SpriteCube">
+      <UniqueIdentifier>{669f685d-fd98-4c31-b146-1f62b9d00d16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -93,6 +99,9 @@
     <ClInclude Include="src\Camera.h">
       <Filter>Source\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="src\ShapeCube.h">
+      <Filter>Source\ShapeCube</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -121,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="src\Camera.cpp">
       <Filter>Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ShapeCube.cpp">
+      <Filter>Source\ShapeCube</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

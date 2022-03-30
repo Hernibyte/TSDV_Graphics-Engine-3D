@@ -31,6 +31,7 @@ void Shape::ChangeColor(float r, float g, float b) {
 	vertex[23] = b;
 	vertex[32] = b;
 
+	render->BindBuffers(vao, vbo, ebo);
 	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
@@ -40,6 +41,7 @@ void Shape::ChangeAlpha(float alpha) {
 	vertex[24] = alpha;
 	vertex[33] = alpha;
 
+	render->BindBuffers(vao, vbo, ebo);
 	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
