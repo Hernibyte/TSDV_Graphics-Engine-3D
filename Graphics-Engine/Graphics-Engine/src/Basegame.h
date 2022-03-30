@@ -5,6 +5,7 @@
 #include "Sprite.h"
 #include "Time.h"
 #include "Camera.h"
+#include "SpriteCube.h"
 
 class Basegame {
 public:

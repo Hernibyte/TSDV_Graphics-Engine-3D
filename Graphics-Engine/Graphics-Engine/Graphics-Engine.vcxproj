@@ -29,6 +29,7 @@
     <ClInclude Include="src\Shape.h" />
     <ClInclude Include="src\ShapeCube.h" />
     <ClInclude Include="src\Sprite.h" />
+    <ClInclude Include="src\SpriteCube.h" />
     <ClInclude Include="src\stb_image.h" />
     <ClInclude Include="src\TextureImporter.h" />
     <ClInclude Include="src\Time.h" />
@@ -43,6 +44,7 @@
     <ClCompile Include="src\Shape.cpp" />
     <ClCompile Include="src\ShapeCube.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
+    <ClCompile Include="src\SpriteCube.cpp" />
     <ClCompile Include="src\stb_image.cpp" />
     <ClCompile Include="src\Time.cpp" />
     <ClCompile Include="src\Window.cpp" />

@@ -102,6 +102,9 @@
     <ClInclude Include="src\ShapeCube.h">
       <Filter>Source\ShapeCube</Filter>
     </ClInclude>
+    <ClInclude Include="src\SpriteCube.h">
+      <Filter>Source\SpriteCube</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="src\ShapeCube.cpp">
       <Filter>Source\ShapeCube</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpriteCube.cpp">
+      <Filter>Source\SpriteCube</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

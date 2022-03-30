@@ -1,11 +1,15 @@
-#ifndef SHAPECUBE_H
-#define SHAPECUBE_H
+#ifndef SPRITECUBE_H
+#define SPRITECUBE_H
 
 #include "Entity.h"
 
-class ShapeCube : public Entity {
+class SpriteCube : public Entity {
 public:
-	ShapeCube(Renderer& renderer);
+	SpriteCube(Renderer& renderer);
+
+	SpriteCube(Renderer& renderer, const char* filePath, TextureType type);
+
+	void ImportTexture(const char* filePath, TextureType type);
 
 	void Rotate(float x, float y, float z);
 
@@ -17,6 +21,8 @@ public:
 
 	void Draw();
 private:
+	Texture texture{};
+
 	unsigned int vao;
 	unsigned int vbo;
 	unsigned int ebo;
@@ -72,4 +78,4 @@ private:
 	};
 };
 
-#endif // !SHAPECUBE_H
+#endif // !SPRITECUBE_H

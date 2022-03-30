@@ -131,7 +131,6 @@ void Renderer::GenerateTexture(Texture& _texture) {
 				GL_UNSIGNED_BYTE, _texture.data);
 			break;
 		}
-
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 }
