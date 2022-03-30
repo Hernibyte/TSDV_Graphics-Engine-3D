@@ -89,7 +89,9 @@ void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
+	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, indexAmount, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 }
 
 void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model) {
@@ -98,7 +100,9 @@ void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
+	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, indexAmount, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 }
 
 void Renderer::GenerateTexture(Texture& _texture) {

@@ -7,6 +7,14 @@ Shape::Shape(Renderer& renderer) : Entity2D(renderer) {
 	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
+Shape::Shape(Renderer& renderer, float r, float g, float b) : Entity2D(renderer) {
+	render->GenerateBuffers(vao, vbo, ebo);
+	render->BindBuffers(vao, vbo, ebo);
+	render->VertexAttributes();
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
+	ChangeColor(r, g, b);
+}
+
 void Shape::ChangeColor(float r, float g, float b) {
 	vertex[3] = r;
 	vertex[12] = r;
@@ -22,6 +30,8 @@ void Shape::ChangeColor(float r, float g, float b) {
 	vertex[14] = b;
 	vertex[23] = b;
 	vertex[32] = b;
+
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
 void Shape::ChangeAlpha(float alpha) {
@@ -29,6 +39,8 @@ void Shape::ChangeAlpha(float alpha) {
 	vertex[15] = alpha;
 	vertex[24] = alpha;
 	vertex[33] = alpha;
+
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
 void Shape::Rotate(float x, float y, float z) {

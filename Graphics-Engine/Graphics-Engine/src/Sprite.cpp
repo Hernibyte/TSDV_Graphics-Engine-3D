@@ -36,6 +36,8 @@ void Sprite::ChangeColor(float r, float g, float b) {
 	vertex[14] = b;
 	vertex[23] = b;
 	vertex[32] = b;
+
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
 void Sprite::ChangeAlpha(float alpha) {
@@ -43,6 +45,8 @@ void Sprite::ChangeAlpha(float alpha) {
 	vertex[15] = alpha;
 	vertex[24] = alpha;
 	vertex[33] = alpha;
+
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
 void Sprite::Rotate(float x, float y, float z) {

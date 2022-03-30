@@ -7,6 +7,8 @@ class Shape : public Entity2D {
 public:
 	Shape(Renderer& renderer);
 
+	Shape(Renderer& renderer, float r, float g, float b);
+
 	void ChangeColor(float r, float g, float b);
 
 	void ChangeAlpha(float alpha);
