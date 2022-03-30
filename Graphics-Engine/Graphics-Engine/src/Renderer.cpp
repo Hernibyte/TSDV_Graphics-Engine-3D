@@ -13,24 +13,34 @@ Renderer::Renderer() {
 }
 
 Renderer::~Renderer() {
-	ClearBuffers();
+	
 }
 
-void Renderer::GenerateBuffers() {
+void Renderer::GenerateBuffers(unsigned int& vao, unsigned int& vbo, unsigned int& ebo) {
 	glGenVertexArrays(1, &vao);
 	glGenBuffers(1, &vbo);
 	glGenBuffers(1, &ebo);
 }
 
-void Renderer::BindBuffers() {
+void Renderer::BindBuffers(unsigned int& vao, unsigned int& vbo, unsigned int& ebo) {
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 }
 
-void Renderer::ClearBuffers() {
+void Renderer::ClearBuffers(unsigned int& vbo, unsigned int& ebo) {
 	glClearBufferData(GL_ARRAY_BUFFER, GL_RGB32F, GL_RGB, GL_FLOAT, &vbo);
 	glClearBufferData(GL_ELEMENT_ARRAY_BUFFER, GL_RGBA8, GL_RGB, GL_UNSIGNED_INT, &ebo);
+}
+
+void Renderer::SetBufferData(float* vertex, unsigned int vertexAmount, unsigned int* index, unsigned int indexAmount) {
+	glBufferData(GL_ARRAY_BUFFER,
+		vertexAmount * sizeof(vertex), vertex,
+		GL_STATIC_DRAW);
+
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+		indexAmount * sizeof(index), index,
+		GL_STATIC_DRAW);
 }
 
 void Renderer::VertexAttributes() {
@@ -70,7 +80,7 @@ void Renderer::UpdateCamera() {
 	glUniformMatrix4fv(projLocation, 1, GL_FALSE, glm::value_ptr(internalCamera.projection));
 }
 
-void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model, Texture _texture) {
+void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture) {
 	glUniform1i(typeLocation, 1);
 	
 	glActiveTexture(GL_TEXTURE0);
@@ -79,32 +89,16 @@ void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model, Texture
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
-	glBufferData(GL_ARRAY_BUFFER,
-		36 * sizeof(vertex), vertex,
-		GL_STATIC_DRAW);
-
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-		6 * sizeof(index), index,
-		GL_STATIC_DRAW);
-
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, indexAmount, GL_UNSIGNED_INT, 0);
 }
 
-void Renderer::Draw(float* vertex, unsigned int* index, glm::mat4 model) {
+void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model) {
 	glUniform1i(typeLocation, 0);
 
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
-	glBufferData(GL_ARRAY_BUFFER,
-		36 * sizeof(vertex), vertex,
-		GL_STATIC_DRAW);
-
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-		6 * sizeof(index), index,
-		GL_STATIC_DRAW);
-
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, indexAmount, GL_UNSIGNED_INT, 0);
 }
 
 void Renderer::GenerateTexture(Texture& _texture) {

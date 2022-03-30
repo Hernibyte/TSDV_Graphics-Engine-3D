@@ -22,6 +22,13 @@ public:
 	void Draw();
 
 private:
+	unsigned int vao;
+	unsigned int vbo;
+	unsigned int ebo;
+
+	unsigned int vertexAmount = 36;
+	unsigned int indexAmount = 6;
+
 	float vertex[36] = {
 		 0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
 		 0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,

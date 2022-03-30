@@ -35,9 +35,6 @@ void Basegame::Run() {
 void Basegame::Core_Start() {
 	ShaderSource shaderSource = Renderer::ParceShader("src/StandardShader/StandardShader.glsl");
 	render.CreateProgram(shaderSource.Vertex, shaderSource.Fragment);
-	render.GenerateBuffers();
-	render.BindBuffers();
-	render.VertexAttributes();
 	render.GetUniformsLocation();
 }
 

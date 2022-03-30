@@ -30,11 +30,11 @@ public:
 	Renderer();
 	~Renderer();
 
-	void GenerateBuffers();
+	void GenerateBuffers(unsigned int& vao, unsigned int& vbo, unsigned int& ebo);
 
-	void BindBuffers();
+	void BindBuffers(unsigned int& vao, unsigned int& vbo, unsigned int& ebo);
 
-	void ClearBuffers();
+	void ClearBuffers(unsigned int& vbo, unsigned int& ebo);
 
 	void VertexAttributes();
 
@@ -42,15 +42,17 @@ public:
 
 	void UpdateCamera();
 
+	void SetBufferData(float* vertex, unsigned int vertexAmount, unsigned int* index, unsigned int indexAmount);
+
 	static ShaderSource ParceShader(const std::string_view filepath);
 
 	static void GenerateTexture(Texture& _texture);
 
 	void CreateProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 	
-	void Draw(float* vertex, unsigned int* index, glm::mat4 model, Texture _texture);
+	void DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture);
 
-	void Draw(float* vertex, unsigned int* index, glm::mat4 model);
+	void Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model);
 	
 	InternalCamera internalCamera { };
 

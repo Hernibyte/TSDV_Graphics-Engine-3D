@@ -1,7 +1,19 @@
 #include "Sprite.h"
 
 Sprite::Sprite(Renderer& renderer) : Entity2D(renderer) {
+	render->GenerateBuffers(vao, vbo, ebo);
+	render->BindBuffers(vao, vbo, ebo);
+	render->VertexAttributes();
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
+}
 
+Sprite::Sprite(Renderer& renderer, const char* filePath, TextureType type)
+	: Entity2D(renderer) {
+	render->GenerateBuffers(vao, vbo, ebo);
+	render->BindBuffers(vao, vbo, ebo);
+	render->VertexAttributes();
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
+	ImportTexture(filePath, type);
 }
 
 void Sprite::ImportTexture(const char* filePath, TextureType type) {
@@ -50,5 +62,5 @@ void Sprite::Scale(float x, float y, float z) {
 }
 
 void Sprite::Draw() {
-	render->Draw(vertex, index, transform.Model(), texture);
+	render->DrawTexture(vao, indexAmount, transform.Model(), texture);
 }

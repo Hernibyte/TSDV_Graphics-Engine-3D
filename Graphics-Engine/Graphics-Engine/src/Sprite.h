@@ -7,6 +7,8 @@ class Sprite : public Entity2D {
 public:
 	Sprite(Renderer& renderer);
 
+	Sprite(Renderer& renderer, const char* filePath, TextureType type);
+
 	void ImportTexture(const char* filePath, TextureType type);
 
 	void ChangeColor(float r, float g, float b);
@@ -24,6 +26,13 @@ public:
 	void Draw();
 
 private:
+	unsigned int vao;
+	unsigned int vbo;
+	unsigned int ebo;
+
+	unsigned int vertexAmount = 36;
+	unsigned int indexAmount = 6;
+
 	float vertex[36] = {
 		 0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
 		 0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,

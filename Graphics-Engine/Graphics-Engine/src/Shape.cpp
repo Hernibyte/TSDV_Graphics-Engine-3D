@@ -1,7 +1,10 @@
 #include "Shape.h"
 
 Shape::Shape(Renderer& renderer) : Entity2D(renderer) {
-
+	render->GenerateBuffers(vao, vbo, ebo);
+	render->BindBuffers(vao, vbo, ebo);
+	render->VertexAttributes();
+	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
 void Shape::ChangeColor(float r, float g, float b) {
@@ -45,5 +48,5 @@ void Shape::Scale(float x, float y, float z) {
 }
 
 void Shape::Draw() {
-	render->Draw(vertex, index, transform.Model());
+	render->Draw(vao, indexAmount, transform.Model());
 }
