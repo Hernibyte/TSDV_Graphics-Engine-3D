@@ -8,6 +8,30 @@
 #include <fstream>
 #include <sstream>
 
+struct Material {
+	glm::vec3 ambient{ 1.0f, 0.5f, 0.31f };
+	glm::vec3 diffuse{ 1.0f, 0.5f, 0.31f };
+	glm::vec3 specular{ 0.5f, 0.5f, 0.5f };
+	float shininess = 32.0f;
+};
+
+struct LightData {
+	LightData(glm::vec3 _position, float r, float g, float b) {
+		position = _position;
+		lightColor = {r, g, b};
+
+		diffuse = lightColor * glm::vec3(0.5f);
+		ambient = diffuse * glm::vec3(0.2f);
+	}
+
+	glm::vec3 lightColor;
+	glm::vec3 position;
+
+	glm::vec3 ambient{};
+	glm::vec3 diffuse{};
+	glm::vec3 specular{ 1.0f, 1.0f, 1.0f };
+};
+
 struct InternalCamera {
 	glm::mat4 view;
 	glm::mat4 projection;
@@ -42,6 +66,8 @@ public:
 
 	void UpdateCamera();
 
+	void SetLight(LightData& light);
+
 	void SetBufferData(float* vertex, unsigned int vertexAmount, unsigned int* index, unsigned int indexAmount);
 
 	static ShaderSource ParceShader(const std::string_view filepath);
@@ -50,9 +76,9 @@ public:
 
 	void CreateProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 	
-	void DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture);
+	void DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture, Material material);
 
-	void Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model);
+	void Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material material);
 	
 	InternalCamera internalCamera { };
 
@@ -69,6 +95,7 @@ private:
 	unsigned int projLocation;
 	unsigned int modelLocation;
 	unsigned int typeLocation;
+	unsigned int viewPosLocation;
 };
 
 #endif // !RENDERER_H

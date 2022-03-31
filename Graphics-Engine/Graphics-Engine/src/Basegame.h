@@ -6,6 +6,7 @@
 #include "Time.h"
 #include "Camera.h"
 #include "SpriteCube.h"
+#include "Light.h"
 
 class Basegame {
 public:

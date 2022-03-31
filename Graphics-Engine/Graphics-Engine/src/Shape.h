@@ -24,18 +24,20 @@ public:
 	void Draw();
 
 private:
+	Material material{};
+
 	unsigned int vao;
 	unsigned int vbo;
 	unsigned int ebo;
 
-	unsigned int vertexAmount = 36;
+	unsigned int vertexAmount = 48;
 	unsigned int indexAmount = 6;
 
-	float vertex[36] = {
-		 0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,
-		 0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,
-		-0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f
+	float vertex[48] = {
+		 0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f, -1.0f,   1.0f, 1.0f,
+		 0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f, -1.0f,   1.0f, 0.0f,
+		-0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f, -1.0f,   0.0f, 0.0f,
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f, -1.0f,   0.0f, 1.0f
 	};
 	unsigned int index[6] = {
 		0, 1, 3,

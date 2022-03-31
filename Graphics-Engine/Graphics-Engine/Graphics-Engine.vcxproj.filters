@@ -55,6 +55,9 @@
     <Filter Include="Source\SpriteCube">
       <UniqueIdentifier>{669f685d-fd98-4c31-b146-1f62b9d00d16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Light">
+      <UniqueIdentifier>{bcc788a6-ce98-4683-8197-905ef210400f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -105,6 +108,9 @@
     <ClInclude Include="src\SpriteCube.h">
       <Filter>Source\SpriteCube</Filter>
     </ClInclude>
+    <ClInclude Include="src\Light.h">
+      <Filter>Source\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -139,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="src\SpriteCube.cpp">
       <Filter>Source\SpriteCube</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Light.cpp">
+      <Filter>Source\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

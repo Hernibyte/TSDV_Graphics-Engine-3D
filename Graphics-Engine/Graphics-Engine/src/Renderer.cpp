@@ -44,14 +44,17 @@ void Renderer::SetBufferData(float* vertex, unsigned int vertexAmount, unsigned 
 }
 
 void Renderer::VertexAttributes() {
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(7 * sizeof(float)));
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)(7 * sizeof(float)));
 	glEnableVertexAttribArray(2);
+
+	glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)(10 * sizeof(float)));
+	glEnableVertexAttribArray(3);
 }
 
 void Renderer::GetUniformsLocation() {
@@ -59,6 +62,7 @@ void Renderer::GetUniformsLocation() {
 	typeLocation = glGetUniformLocation(program, "type");
 	viewLocation = glGetUniformLocation(program, "view");
 	projLocation = glGetUniformLocation(program, "projection");
+	viewPosLocation = glGetUniformLocation(program, "viewPos");
 }
 
 void Renderer::UpdateCamera() {
@@ -80,7 +84,14 @@ void Renderer::UpdateCamera() {
 	glUniformMatrix4fv(projLocation, 1, GL_FALSE, glm::value_ptr(internalCamera.projection));
 }
 
-void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture) {
+void Renderer::SetLight(LightData& light) {
+	glUniform3fv(glGetUniformLocation(program, "light.position"), 1, &light.position[0]);
+	glUniform3fv(glGetUniformLocation(program, "light.ambient"), 1, &light.ambient[0]);
+	glUniform3fv(glGetUniformLocation(program, "light.diffuse"), 1, &light.diffuse[0]);
+	glUniform3fv(glGetUniformLocation(program, "light.specular"), 1, &light.specular[0]);
+}
+
+void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture, Material material) {
 	glUniform1i(typeLocation, 1);
 	
 	glActiveTexture(GL_TEXTURE0);
@@ -89,16 +100,30 @@ void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
+	glUniform3fv(glGetUniformLocation(program, "material.ambient"), 1, &material.ambient[0]);
+	glUniform3fv(glGetUniformLocation(program, "material.diffuse"), 1, &material.diffuse[0]);
+	glUniform3fv(glGetUniformLocation(program, "material.specular"), 1, &material.specular[0]);
+	glUniform1f(glGetUniformLocation(program, "material.shininess"), material.shininess);
+
+	glUniform3fv(viewPosLocation, 1, &internalCamera.cameraPos[0]);
+
 	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, indexAmount, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 }
 
-void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model) {
+void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material material) {
 	glUniform1i(typeLocation, 0);
 
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
+
+	glUniform3fv(glGetUniformLocation(program, "material.ambient"), 1, &material.ambient[0]);
+	glUniform3fv(glGetUniformLocation(program, "material.diffuse"), 1, &material.diffuse[0]);
+	glUniform3fv(glGetUniformLocation(program, "material.specular"), 1, &material.specular[0]);
+	glUniform1f(glGetUniformLocation(program, "material.shininess"), material.shininess);
+
+	glUniform3fv(viewPosLocation, 1, &internalCamera.cameraPos[0]);
 
 	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, indexAmount, GL_UNSIGNED_INT, 0);

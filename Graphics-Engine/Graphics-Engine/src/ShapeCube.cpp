@@ -24,5 +24,5 @@ void ShapeCube::Scale(float x, float y, float z) {
 }
 
 void ShapeCube::Draw() {
-	render->Draw(vao, indexAmount, transform.Model());
+	render->Draw(vao, indexAmount, transform.Model(), material);
 }

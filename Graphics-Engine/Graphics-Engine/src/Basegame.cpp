@@ -19,7 +19,7 @@ void Basegame::Run() {
 	while (!window.IsWindowShouldClose()) {
 		time.Start();
 
-		window.Clear(1, 1, 1, 1);
+		window.Clear(0, 0, 0, 1);
 
 		Core_Update();
 		Update();

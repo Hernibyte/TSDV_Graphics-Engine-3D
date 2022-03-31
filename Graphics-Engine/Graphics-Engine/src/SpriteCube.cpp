@@ -37,5 +37,5 @@ void SpriteCube::Scale(float x, float y, float z) {
 }
 
 void SpriteCube::Draw() {
-	render->DrawTexture(vao, indexAmount, transform.Model(), texture);
+	render->DrawTexture(vao, indexAmount, transform.Model(), texture, material);
 }
