@@ -36,11 +36,11 @@ void Renderer::ClearBuffers(unsigned int& vbo, unsigned int& ebo) {
 void Renderer::SetBufferData(float* vertex, unsigned int vertexAmount, unsigned int* index, unsigned int indexAmount) {
 	glBufferData(GL_ARRAY_BUFFER,
 		vertexAmount * sizeof(vertex), vertex,
-		GL_STATIC_DRAW);
+		GL_DYNAMIC_DRAW);
 
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
 		indexAmount * sizeof(index), index,
-		GL_STATIC_DRAW);
+		GL_DYNAMIC_DRAW);
 }
 
 void Renderer::VertexAttributes() {
