@@ -20,15 +20,11 @@ struct Texture {
 
 class TextureImporter {
 public:
-	inline static Texture Import(const char* file_path, TextureType type, Texture tex) {
-		Texture aux;
-
+	inline static void Import(const char* file_path, TextureType type, Texture& tex) {
 		stbi_set_flip_vertically_on_load(true);
 
-		aux.data = stbi_load(file_path, &tex.width, &tex.height, &tex.nrChannels, 0);
-		aux.type = type;
-
-		return aux;
+		tex.data = stbi_load(file_path, &tex.width, &tex.height, &tex.nrChannels, 0);
+		tex.type = type;
 	}
 };
 

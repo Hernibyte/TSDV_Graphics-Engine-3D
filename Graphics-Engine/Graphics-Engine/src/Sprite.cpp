@@ -17,7 +17,7 @@ Sprite::Sprite(Renderer& renderer, const char* filePath, TextureType type)
 }
 
 void Sprite::ImportTexture(const char* filePath, TextureType type) {
-	//texture = TextureImporter::Import(filePath, type, texture);
+	TextureImporter::Import(filePath, type, texture);
 	Renderer::GenerateTexture(texture);
 }
 

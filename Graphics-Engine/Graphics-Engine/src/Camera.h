@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "Renderer.h"
+#include "Entity.h"
 
 class Camera {
 public:
@@ -15,7 +15,6 @@ public:
 	void Rotate(float x, float y, bool constrainPitch = true);
 
 	void SetProjection(ProjectionType type);
-
 private:
 	void UpdateCameraVectors();
 

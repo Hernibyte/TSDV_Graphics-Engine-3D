@@ -16,7 +16,7 @@ SpriteCube::SpriteCube(Renderer& renderer, const char* filePath, TextureType typ
 }
 
 void SpriteCube::ImportTexture(const char* filePath, TextureType type) {
-	texture = TextureImporter::Import(filePath, type, texture);
+	TextureImporter::Import(filePath, type, texture);
 	Renderer::GenerateTexture(texture);
 }
 

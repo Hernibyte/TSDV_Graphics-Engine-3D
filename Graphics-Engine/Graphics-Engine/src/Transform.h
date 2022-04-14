@@ -52,6 +52,10 @@ public:
 		scale = glm::scale(glm::mat4(1.0f), mylocalScale);
 		UpdateModel();
 	}
+
+	glm::vec3 myposition;
+	glm::quat myrotation;
+	glm::vec3 mylocalScale;
 private:
 	inline void RotateX(float x) {
 		myrotation[0] = x;
@@ -95,10 +99,6 @@ private:
 	glm::mat4 rotatey;
 	glm::mat4 rotatez;
 	glm::mat4 scale;
-
-	glm::vec3 myposition;
-	glm::quat myrotation;
-	glm::vec3 mylocalScale;
 };
 
 #endif // !TRRANSFORM_H
