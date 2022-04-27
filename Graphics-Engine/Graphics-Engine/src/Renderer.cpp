@@ -44,17 +44,14 @@ void Renderer::SetBufferData(float* vertex, unsigned int vertexAmount, unsigned 
 }
 
 void Renderer::VertexAttributes() {
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)(7 * sizeof(float)));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
-
-	glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 12 * sizeof(float), (void*)(10 * sizeof(float)));
-	glEnableVertexAttribArray(3);
 }
 
 void Renderer::GetUniformsLocation() {
@@ -100,6 +97,7 @@ void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
+	glUniform4fv(glGetUniformLocation(program, "material.color"), 1, &material.color[0]);
 	glUniform3fv(glGetUniformLocation(program, "material.ambient"), 1, &material.ambient[0]);
 	glUniform3fv(glGetUniformLocation(program, "material.diffuse"), 1, &material.diffuse[0]);
 	glUniform3fv(glGetUniformLocation(program, "material.specular"), 1, &material.specular[0]);
@@ -118,6 +116,7 @@ void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
+	glUniform4fv(glGetUniformLocation(program, "material.color"), 1, &material.color[0]);
 	glUniform3fv(glGetUniformLocation(program, "material.ambient"), 1, &material.ambient[0]);
 	glUniform3fv(glGetUniformLocation(program, "material.diffuse"), 1, &material.diffuse[0]);
 	glUniform3fv(glGetUniformLocation(program, "material.specular"), 1, &material.specular[0]);

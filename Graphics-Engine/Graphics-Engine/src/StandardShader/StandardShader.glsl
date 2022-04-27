@@ -2,11 +2,9 @@
 #version 330 core
 
 layout(location = 0) in vec3 inPosition;
-layout(location = 1) in vec4 inColor;
-layout(location = 2) in vec3 inNormal; //
-layout(location = 3) in vec2 inTexCoord;
+layout(location = 1) in vec3 inNormal; //
+layout(location = 2) in vec2 inTexCoord;
 
-out vec4 ourColor;
 out vec2 texCoord;
 out vec3 FragPos;
 out vec3 ourNormal;
@@ -17,7 +15,6 @@ uniform mat4 projection;
 
 void main() {
 	gl_Position = projection * view * model * vec4(inPosition, 1.0);
-	ourColor = inColor;
 	texCoord = inTexCoord;
 
 	FragPos = vec3(model * vec4(inPosition, 1.0));
@@ -29,6 +26,7 @@ void main() {
 out vec4 FragColor;
 
 struct Material {
+	vec4 color;
 	vec3 ambient;
 	vec3 diffuse;
 	vec3 specular;
@@ -43,7 +41,6 @@ struct Light {
 	vec3 specular;
 };
 
-in vec4 ourColor;
 in vec2 texCoord;
 in vec3 ourNormal;
 in vec3 FragPos;
@@ -75,7 +72,7 @@ void main() {
 		    
 		vec3 result = ambient + diffuse + specular;
 
-		FragColor = vec4(result, 1.0) * ourColor;
+		FragColor = vec4(result, 1.0) * material.color;
 	}
 	else if (type == 1) {
 		// ambient
@@ -95,6 +92,6 @@ void main() {
 		    
 		vec3 result = ambient + diffuse + specular;
 
-		FragColor = texture(ourTexture, texCoord) * vec4(result, 1.0) * ourColor;
+		FragColor = texture(ourTexture, texCoord) * vec4(result, 1.0) * material.color;
 	}
 }
