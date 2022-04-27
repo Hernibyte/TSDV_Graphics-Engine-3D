@@ -43,3 +43,19 @@ void Camera::UpdateCameraVectors() {
 void Camera::SetProjection(ProjectionType type) {
 	render->projectionType = type;
 }
+
+void Camera::TargetFirstPerson(Entity entity) {
+	SetPosition(
+		entity.transform.myposition.x,
+		entity.transform.myposition.y,
+		entity.transform.myposition.z
+	);
+}
+
+void Camera::TargetThirdPerson(Entity entity, float y_offset, float z_offset) {
+	SetPosition(
+		entity.transform.myposition.x,
+		entity.transform.myposition.y + y_offset,
+		entity.transform.myposition.z + z_offset
+	);
+}

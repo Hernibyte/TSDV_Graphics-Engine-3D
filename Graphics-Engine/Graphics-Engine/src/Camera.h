@@ -15,6 +15,10 @@ public:
 	void Rotate(float x, float y, bool constrainPitch = true);
 
 	void SetProjection(ProjectionType type);
+
+	void TargetFirstPerson(Entity entity);
+
+	void TargetThirdPerson(Entity entity, float y_offset, float z_offset);
 private:
 	void UpdateCameraVectors();
 
