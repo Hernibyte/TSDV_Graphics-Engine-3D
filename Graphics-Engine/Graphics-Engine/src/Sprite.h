@@ -7,9 +7,9 @@ class Sprite : public Entity2D {
 public:
 	Sprite(Renderer& renderer);
 
-	Sprite(Renderer& renderer, const char* filePath, TextureType type);
+	void ImportDiffuse(const char* filePath, TextureType type);
 
-	void ImportTexture(const char* filePath, TextureType type);
+	void ImportSpecular(const char* filePath, TextureType type);
 
 	void ChangeColor(float r, float g, float b);
 
@@ -26,7 +26,7 @@ public:
 	void Draw();
 
 private:
-	Material material{};
+	LightingMap lightingMap{};
 
 	unsigned int vao;
 	unsigned int vbo;
@@ -45,7 +45,6 @@ private:
 		0, 1, 3,
 		1, 2, 3
 	};
-	Texture texture{};
 };
 
 #endif // !SPRITE_H

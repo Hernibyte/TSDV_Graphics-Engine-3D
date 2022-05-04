@@ -23,10 +23,10 @@ private:
 	unsigned int vbo;
 	unsigned int ebo;
 
-	const int vertexAmount = 288;
+	const int vertexAmount = 192;
 	const int indexAmount = 36;
 
-	float vertex[288] = {
+	float vertex[192] = {
 		 0.5f,  0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   1.0f, 1.0f,
 		 0.5f, -0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   1.0f, 0.0f,
 		-0.5f, -0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   0.0f, 0.0f,

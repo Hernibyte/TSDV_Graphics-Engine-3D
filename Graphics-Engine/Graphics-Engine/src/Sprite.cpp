@@ -7,18 +7,14 @@ Sprite::Sprite(Renderer& renderer) : Entity2D(renderer) {
 	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
-Sprite::Sprite(Renderer& renderer, const char* filePath, TextureType type)
-	: Entity2D(renderer) {
-	render->GenerateBuffers(vao, vbo, ebo);
-	render->BindBuffers(vao, vbo, ebo);
-	render->VertexAttributes();
-	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
-	ImportTexture(filePath, type);
+void Sprite::ImportDiffuse(const char* filePath, TextureType type) {
+	TextureImporter::Import(filePath, type, lightingMap.diffuse);
+	Renderer::GenerateTexture(lightingMap.diffuse);
 }
 
-void Sprite::ImportTexture(const char* filePath, TextureType type) {
-	TextureImporter::Import(filePath, type, texture);
-	Renderer::GenerateTexture(texture);
+void Sprite::ImportSpecular(const char* filePath, TextureType type) {
+	TextureImporter::Import(filePath, type, lightingMap.specular);
+	Renderer::GenerateTexture(lightingMap.specular);
 }
 
 void Sprite::ChangeColor(float r, float g, float b) {
@@ -68,5 +64,5 @@ void Sprite::Scale(float x, float y, float z) {
 }
 
 void Sprite::Draw() {
-	render->DrawTexture(vao, indexAmount, transform.Model(), texture, material);
+	render->DrawTexture(vao, indexAmount, transform.Model(), lightingMap);
 }

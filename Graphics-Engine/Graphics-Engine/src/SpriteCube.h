@@ -7,9 +7,9 @@ class SpriteCube : public Entity {
 public:
 	SpriteCube(Renderer& renderer);
 
-	SpriteCube(Renderer& renderer, const char* filePath, TextureType type);
+	void ImportDiffuse(const char* filePath, TextureType type);
 
-	void ImportTexture(const char* filePath, TextureType type);
+	void ImportSpecular(const char* filePath, TextureType type);
 
 	void Rotate(float x, float y, float z);
 
@@ -21,17 +21,16 @@ public:
 
 	void Draw();
 private:
-	Texture texture{};
-	Material material{};
+	LightingMap lightingMap{};
 
 	unsigned int vao;
 	unsigned int vbo;
 	unsigned int ebo;
 
-	const int vertexAmount = 288;
+	const int vertexAmount = 192;
 	const int indexAmount = 36;
 
-	float vertex[288] = {
+	float vertex[192] = {
 		 0.5f,  0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   1.0f, 1.0f,
 		 0.5f, -0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   1.0f, 0.0f,
 		-0.5f, -0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   0.0f, 0.0f,

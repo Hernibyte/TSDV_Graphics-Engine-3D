@@ -88,20 +88,21 @@ void Renderer::SetLight(LightData& light) {
 	glUniform3fv(glGetUniformLocation(program, "light.specular"), 1, &light.specular[0]);
 }
 
-void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture, Material material) {
+void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap) {
 	glUniform1i(typeLocation, 1);
 	
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _texture.texture);
-	
+	glBindTexture(GL_TEXTURE_2D, lightingMap.diffuse.texture);
+
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, lightingMap.specular.texture);
+
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));
 
-	glUniform4fv(glGetUniformLocation(program, "material.color"), 1, &material.color[0]);
-	glUniform3fv(glGetUniformLocation(program, "material.ambient"), 1, &material.ambient[0]);
-	glUniform3fv(glGetUniformLocation(program, "material.diffuse"), 1, &material.diffuse[0]);
-	glUniform3fv(glGetUniformLocation(program, "material.specular"), 1, &material.specular[0]);
-	glUniform1f(glGetUniformLocation(program, "material.shininess"), material.shininess);
+	glUniform4fv(glGetUniformLocation(program, "material.color"), 1, &lightingMap.color[0]);
+	glUniform3fv(glGetUniformLocation(program, "material.ambient"), 1, &lightingMap.ambient[0]);
+	glUniform1f(glGetUniformLocation(program, "material.shininess"), lightingMap.shininess);
 
 	glUniform3fv(viewPosLocation, 1, &internalCamera.cameraPos[0]);
 
@@ -110,7 +111,7 @@ void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat
 	glBindVertexArray(0);
 }
 
-void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material material) {
+void Renderer::Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material& material) {
 	glUniform1i(typeLocation, 0);
 
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,

@@ -16,6 +16,14 @@ struct Material {
 	float shininess = 32.0f;
 };
 
+struct LightingMap {
+	glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
+	glm::vec3 ambient{ 1.0f, 0.5f, 0.31f };
+	Texture diffuse{};
+	Texture specular{};
+	float shininess = 32.0f;
+};
+
 struct LightData {
 	LightData(glm::vec3 _position, float r, float g, float b) {
 		position = _position;
@@ -77,9 +85,9 @@ public:
 
 	void CreateProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 	
-	void DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Texture _texture, Material material);
+	void DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap);
 
-	void Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material material);
+	void Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material& material);
 	
 	InternalCamera internalCamera { };
 

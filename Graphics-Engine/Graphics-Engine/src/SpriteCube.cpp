@@ -7,17 +7,14 @@ SpriteCube::SpriteCube(Renderer& renderer) : Entity(renderer) {
 	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
 }
 
-SpriteCube::SpriteCube(Renderer& renderer, const char* filePath, TextureType type) : Entity(renderer) {
-	render->GenerateBuffers(vao, vbo, ebo);
-	render->BindBuffers(vao, vbo, ebo);
-	render->VertexAttributes();
-	render->SetBufferData(vertex, vertexAmount, index, indexAmount);
-	ImportTexture(filePath, type);
+void SpriteCube::ImportDiffuse(const char* filePath, TextureType type) {
+	TextureImporter::Import(filePath, type, lightingMap.diffuse);
+	Renderer::GenerateTexture(lightingMap.diffuse);
 }
 
-void SpriteCube::ImportTexture(const char* filePath, TextureType type) {
-	TextureImporter::Import(filePath, type, texture);
-	Renderer::GenerateTexture(texture);
+void SpriteCube::ImportSpecular(const char* filePath, TextureType type) {
+	TextureImporter::Import(filePath, type, lightingMap.specular);
+	Renderer::GenerateTexture(lightingMap.specular);
 }
 
 void SpriteCube::Rotate(float x, float y, float z) {
@@ -37,5 +34,5 @@ void SpriteCube::Scale(float x, float y, float z) {
 }
 
 void SpriteCube::Draw() {
-	render->DrawTexture(vao, indexAmount, transform.Model(), texture, material);
+	render->DrawTexture(vao, indexAmount, transform.Model(), lightingMap);
 }
