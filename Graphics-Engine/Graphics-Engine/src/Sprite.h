@@ -2,8 +2,9 @@
 #define SPRITE_H
 
 #include "ShapeCube.h"
+#include "Export.h"
 
-class Sprite : public Entity2D {
+class ENGINE_API Sprite : public Entity2D {
 public:
 	Sprite(Renderer& renderer);
 

@@ -5,8 +5,9 @@
 #include "Camera.h"
 #include "SpriteCube.h"
 #include "Light.h"
+#include "Export.h"
 
-class Basegame {
+class ENGINE_API Basegame {
 public:
 	Basegame();
 	Basegame(int width, int height, const char* tittle);

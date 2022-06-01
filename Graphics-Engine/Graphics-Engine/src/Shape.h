@@ -2,8 +2,9 @@
 #define SHAPE_H
 
 #include "Entity2D.h"
+#include "Export.h"
 
-class Shape : public Entity2D {
+class ENGINE_API Shape : public Entity2D {
 public:
 	Shape(Renderer& renderer);
 

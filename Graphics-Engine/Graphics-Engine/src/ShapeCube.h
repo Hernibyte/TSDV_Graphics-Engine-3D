@@ -2,8 +2,9 @@
 #define SHAPECUBE_H
 
 #include "Shape.h"
+#include "Export.h"
 
-class ShapeCube : public Entity {
+class ENGINE_API ShapeCube : public Entity {
 public:
 	ShapeCube(Renderer& renderer);
 

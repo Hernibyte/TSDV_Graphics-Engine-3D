@@ -3,13 +3,14 @@
 
 #include "stb_image.h"
 #include <iostream>
+#include "Export.h"
 
-enum class TextureType {
+enum class ENGINE_API TextureType {
 	RGB = 0,
 	RGBA = 1
 };
 
-struct Texture {
+struct ENGINE_API Texture {
 	unsigned int texture;
 	unsigned char* data;
 	int width;
@@ -17,8 +18,8 @@ struct Texture {
 	int nrChannels;
 	TextureType type;
 };
-
-class TextureImporter {
+ 
+class ENGINE_API TextureImporter {
 public:
 	inline static void Import(const char* file_path, TextureType type, Texture& tex) {
 		stbi_set_flip_vertically_on_load(true);

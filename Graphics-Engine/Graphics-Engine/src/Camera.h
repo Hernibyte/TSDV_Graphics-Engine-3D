@@ -2,8 +2,9 @@
 #define CAMERA_H
 
 #include "Entity.h"
+#include "Export.h"
 
-class Camera {
+class ENGINE_API Camera {
 public:
 	Camera() = delete;
 	Camera(Renderer& renderer);

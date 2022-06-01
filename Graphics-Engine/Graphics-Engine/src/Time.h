@@ -2,8 +2,9 @@
 #define TIME_H
 
 #include <chrono>
+#include "Export.h"
 
-class Time {
+class ENGINE_API Time {
 public:
 	Time();
 

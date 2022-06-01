@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include "Export.h"
 
-struct ShaderSource {
+struct ENGINE_API ShaderSource {
 	std::string Vertex;
 	std::string Fragment;
 };

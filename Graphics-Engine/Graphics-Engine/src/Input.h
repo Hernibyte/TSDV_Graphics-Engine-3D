@@ -2,8 +2,9 @@
 #define INPUT_H
 
 #include "Window.h"
+#include "Export.h"
 
-class Input {
+class ENGINE_API Input {
 public:
 	Input(Window& window);
 	bool GetKey(int keyCode);

@@ -4,8 +4,9 @@
 #include <iostream>
 #include "GLEW/include/GL/glew.h"
 #include "GLFW/include/glfw3.h"
+#include "Export.h"
 
-class Window {
+class ENGINE_API Window {
 public:
 	Window();
 	Window(int width, int height, const char* tittle);

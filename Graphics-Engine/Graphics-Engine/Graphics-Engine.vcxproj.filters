@@ -58,6 +58,9 @@
     <Filter Include="Source\Light">
       <UniqueIdentifier>{bcc788a6-ce98-4683-8197-905ef210400f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Export">
+      <UniqueIdentifier>{a39ec58e-ec35-4178-8303-f63536a42b85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -110,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="src\Light.h">
       <Filter>Source\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Export.h">
+      <Filter>Source\Export</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

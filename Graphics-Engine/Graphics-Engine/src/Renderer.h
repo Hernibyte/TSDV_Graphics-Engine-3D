@@ -7,8 +7,9 @@
 #include "TextureImporter.h"
 #include <fstream>
 #include <sstream>
+#include "Export.h"
 
-struct Material {
+struct ENGINE_API Material {
 	glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
 	glm::vec3 ambient{ 1.0f, 0.5f, 0.31f };
 	glm::vec3 diffuse{ 1.0f, 0.5f, 0.31f };
@@ -16,7 +17,7 @@ struct Material {
 	float shininess = 32.0f;
 };
 
-struct LightingMap {
+struct ENGINE_API LightingMap {
 	glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
 	glm::vec3 ambient{ 1.0f, 0.5f, 0.31f };
 	Texture diffuse{};
@@ -24,7 +25,7 @@ struct LightingMap {
 	float shininess = 32.0f;
 };
 
-struct LightData {
+struct ENGINE_API LightData {
 	LightData(glm::vec3 _position, float r, float g, float b) {
 		position = _position;
 		lightColor = {r, g, b};
@@ -41,7 +42,7 @@ struct LightData {
 	glm::vec3 specular{ 1.0f, 1.0f, 1.0f };
 };
 
-struct InternalCamera {
+struct ENGINE_API InternalCamera {
 	glm::mat4 view;
 	glm::mat4 projection;
 	glm::vec3 cameraPos { 0, 0, 3.0f };
@@ -53,12 +54,12 @@ struct InternalCamera {
 	float pitch = 0.0f;
 };
 
-enum class ProjectionType {
+enum class ENGINE_API ProjectionType {
 	Perspective,
 	Orthographic
 };
 
-class Renderer {
+class ENGINE_API Renderer {
 public:
 	Renderer();
 	~Renderer();

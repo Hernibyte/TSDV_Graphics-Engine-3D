@@ -3,8 +3,9 @@
 
 #include "glm/glm/matrix.hpp"
 #include "glm/glm/gtc/type_ptr.hpp"
+#include "Export.h"
 
-class Transform {
+class ENGINE_API Transform {
 public:
 	Transform() {
 		model = glm::mat4(1.0f);

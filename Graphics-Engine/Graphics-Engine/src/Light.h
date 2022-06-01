@@ -2,8 +2,9 @@
 #define LIGHT_H
 
 #include "Renderer.h"
+#include "Export.h"
 
-class Light {
+class ENGINE_API Light {
 public:
 	Light(Renderer& renderer);
 
