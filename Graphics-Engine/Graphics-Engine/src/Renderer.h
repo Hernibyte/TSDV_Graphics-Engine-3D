@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include "Export.h"
+#include <vector>
 
 struct ENGINE_API Material {
 	glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
@@ -40,6 +41,47 @@ struct ENGINE_API LightData {
 	glm::vec3 ambient{};
 	glm::vec3 diffuse{};
 	glm::vec3 specular{ 1.0f, 1.0f, 1.0f };
+};
+
+struct ENGINE_API DirectionalLightData {
+	glm::vec3 direction;
+
+	glm::vec3 ambient;
+	glm::vec3 diffuse;
+	glm::vec3 specular;
+
+	int lightIsSet = 0;
+};
+
+struct ENGINE_API PointLightData {
+	glm::vec3 position;
+
+	float constant;
+	float linear;
+	float quadratic;
+
+	glm::vec3 ambient;
+	glm::vec3 diffuse;
+	glm::vec3 specular;
+
+	int lightIsSet = 0;
+};
+
+struct ENGINE_API SpotLightData {
+	glm::vec3 position;
+	glm::vec3 direction;
+	float cutOff;
+	float outerCutOff;
+
+	float constant;
+	float linear;
+	float quadratic;
+
+	glm::vec3 ambient;
+	glm::vec3 diffuse;
+	glm::vec3 specular;
+	
+	int lightIsSet = 0;
 };
 
 struct ENGINE_API InternalCamera {
@@ -76,7 +118,7 @@ public:
 
 	void UpdateCamera();
 
-	void SetLight(LightData& light);
+	void DrawLights();
 
 	void SetBufferData(float* vertex, unsigned int vertexAmount, unsigned int* index, unsigned int indexAmount);
 
@@ -90,12 +132,24 @@ public:
 
 	void Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material& material);
 	
+	void SetDirectionalLight(DirectionalLightData& directionalLight);
+
+	void AddPointLight(PointLightData& pointLights, int lNumber);
+
+	void SetSpotLight(SpotLightData& spotLight);
+
 	InternalCamera internalCamera { };
 
 	ProjectionType projectionType { };
 private:
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 	
+	DirectionalLightData* directionalLight = nullptr;
+	PointLightData* pointLights[4] = {
+		nullptr, nullptr, nullptr, nullptr
+	};
+	SpotLightData* spotLight = nullptr;
+
 	unsigned int vao;
 	unsigned int vbo;
 	unsigned int ebo;

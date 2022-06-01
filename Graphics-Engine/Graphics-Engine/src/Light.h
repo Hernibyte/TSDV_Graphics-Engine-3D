@@ -12,7 +12,7 @@ public:
 
 	void SetPosition(float x, float y, float z);
 
-	void Draw();
+	void Load();
 private:
 	LightData data{ glm::vec3(1.0f), 1, 1, 1};
 	Renderer* render;

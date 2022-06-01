@@ -11,6 +11,10 @@ public:
 
 	void SetPosition(float x, float y, float z);
 
+	glm::vec3 Position();
+	
+	glm::vec3 Front();
+
 	void Translate(float x, float y, float z);
 
 	void Rotate(float x, float y, bool constrainPitch = true);

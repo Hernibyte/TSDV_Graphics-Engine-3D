@@ -16,6 +16,6 @@ void Light::SetPosition(float x, float y, float z) {
 	data.position[2] = z;
 }
 
-void Light::Draw() {
-	render->SetLight(data);
+void Light::Load() {
+	
 }

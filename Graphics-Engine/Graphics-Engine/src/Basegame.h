@@ -4,7 +4,9 @@
 #include "TimeM.h"
 #include "Camera.h"
 #include "SpriteCube.h"
-#include "Light.h"
+#include "DirectionalLight.h"
+#include "PointLight.h"
+#include "SpotLight.h"
 #include "Export.h"
 
 class ENGINE_API Basegame {

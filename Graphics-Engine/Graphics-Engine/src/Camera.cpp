@@ -10,6 +10,14 @@ void Camera::SetPosition(float x, float y, float z) {
 	render->internalCamera.cameraPos.z = z;
 }
 
+glm::vec3 Camera::Position() {
+	return render->internalCamera.cameraPos;
+}
+
+glm::vec3 Camera::Front() {
+	return render->internalCamera.cameraFront;
+}
+
 void Camera::Translate(float x, float y, float z) {
 	render->internalCamera.cameraPos.x += x;
 	render->internalCamera.cameraPos.y += y;
