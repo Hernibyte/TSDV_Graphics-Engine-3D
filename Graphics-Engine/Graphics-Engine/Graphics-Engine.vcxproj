@@ -34,7 +34,7 @@
     <ClInclude Include="src\SpriteCube.h" />
     <ClInclude Include="src\stb_image.h" />
     <ClInclude Include="src\TextureImporter.h" />
-    <ClInclude Include="src\Time.h" />
+    <ClInclude Include="src\TimeM.h" />
     <ClInclude Include="src\Transform.h" />
     <ClInclude Include="src\Window.h" />
   </ItemGroup>
@@ -49,7 +49,7 @@
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\SpriteCube.cpp" />
     <ClCompile Include="src\stb_image.cpp" />
-    <ClCompile Include="src\Time.cpp" />
+    <ClCompile Include="src\TimeM.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -96,7 +96,7 @@
     <ClInclude Include="src\stb_image.h">
       <Filter>Source\Tools\TextureImporter\stbi</Filter>
     </ClInclude>
-    <ClInclude Include="src\Time.h">
+    <ClInclude Include="src\TimeM.h">
       <Filter>Source\Timer</Filter>
     </ClInclude>
     <ClInclude Include="src\Input.h">
@@ -137,7 +137,7 @@
     <ClCompile Include="src\stb_image.cpp">
       <Filter>Source\Tools\TextureImporter\stbi</Filter>
     </ClCompile>
-    <ClCompile Include="src\Time.cpp">
+    <ClCompile Include="src\TimeM.cpp">
       <Filter>Source\Timer</Filter>
     </ClCompile>
     <ClCompile Include="src\Input.cpp">

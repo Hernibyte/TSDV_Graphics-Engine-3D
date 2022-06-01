@@ -19,13 +19,16 @@ struct ENGINE_API Texture {
 	TextureType type;
 };
  
-class ENGINE_API TextureImporter {
+class TextureImporter {
 public:
 	inline static void Import(const char* file_path, TextureType type, Texture& tex) {
 		stbi_set_flip_vertically_on_load(true);
 
 		tex.data = stbi_load(file_path, &tex.width, &tex.height, &tex.nrChannels, 0);
 		tex.type = type;
+
+		if (!tex.data)
+			std::cout << "No texture load" << std::endl;
 	}
 };
 

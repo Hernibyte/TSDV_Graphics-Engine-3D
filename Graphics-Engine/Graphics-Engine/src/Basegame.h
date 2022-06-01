@@ -1,7 +1,7 @@
 #ifndef BASEGAME_H
 #define BASEGAME_H
 
-#include "Time.h"
+#include "TimeM.h"
 #include "Camera.h"
 #include "SpriteCube.h"
 #include "Light.h"
@@ -19,7 +19,7 @@ protected:
 	Window window { };
 	Renderer render { };
 
-	Time time { };
+	TimeM time { };
 	Input input { window };
 
 	virtual void Start() {}
