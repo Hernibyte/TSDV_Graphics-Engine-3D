@@ -9,6 +9,10 @@
 #include "SpotLight.h"
 #include "Export.h"
 
+#include "assimp/scene.h"
+#include "assimp/Exporter.hpp"
+#include "assimp/postprocess.h"
+
 class ENGINE_API Basegame {
 public:
 	Basegame();
