@@ -169,8 +169,17 @@ void Renderer::DrawMesh(unsigned int& vao, unsigned int indexAmount, glm::mat4 m
 
 	DrawLights();
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, textures[0].texture);
+	for (unsigned int i = 0; i < textures.size(); i++) {
+		std::string name = textures[i].txType;
+		if (name == "texture_diffuse") {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, textures[i].texture);
+		}
+		else if (name == "texture_specular") {
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, textures[i].texture);
+		}
+	}
 
 	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
 		glm::value_ptr(model));

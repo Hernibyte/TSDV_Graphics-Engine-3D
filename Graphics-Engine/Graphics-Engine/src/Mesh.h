@@ -32,8 +32,6 @@ public:
 
 	void Draw(glm::mat4 parentModel);
 
-	void SetTexture(const char* path, TextureType type);
-
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;

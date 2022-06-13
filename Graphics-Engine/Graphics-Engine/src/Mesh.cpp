@@ -53,8 +53,3 @@ Mesh::Mesh(std::vector<Vertex> vertices,
 void Mesh::Draw(glm::mat4 parentModel) {
 	render->DrawMesh(vao, indices.size(), parentModel, lightingMap, textures);
 }
-
-void Mesh::SetTexture(const char* path, TextureType type) {
-    TextureImporter::Import(path, type, lightingMap.diffuse);
-    Renderer::GenerateTexture(lightingMap.diffuse);
-}
