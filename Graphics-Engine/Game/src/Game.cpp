@@ -55,18 +55,44 @@ void Game::Update() {
 	if (input.GetKey(GLFW_KEY_Q))
 		playerShape.Translate(0, 0, 0.1f);
 
-	if (input.GetKey(GLFW_KEY_I))
+	if (input.GetKey(GLFW_KEY_UP))
 		spotLightShape.Translate(0, 0.1f, 0);
-	if (input.GetKey(GLFW_KEY_K))
+	if (input.GetKey(GLFW_KEY_DOWN))
 		spotLightShape.Translate(0, -0.1f, 0);
-	if (input.GetKey(GLFW_KEY_L))
+	if (input.GetKey(GLFW_KEY_RIGHT))
 		spotLightShape.Translate(0.1f, 0, 0);
-	if (input.GetKey(GLFW_KEY_J))
+	if (input.GetKey(GLFW_KEY_LEFT))
 		spotLightShape.Translate(-0.1f, 0, 0);
+
+	if (input.GetKey(GLFW_KEY_I))
+		seta.transform.Translate(0, 0.03f, 0);
+	if (input.GetKey(GLFW_KEY_K))
+		seta.transform.Translate(0, -0.03f, 0);
+	if (input.GetKey(GLFW_KEY_J))
+		seta.transform.Translate(-0.03f, 0, 0);
+	if (input.GetKey(GLFW_KEY_L))
+		seta.transform.Translate(0.03f, 0, 0);
 	if (input.GetKey(GLFW_KEY_O))
-		spotLightShape.Translate(0, 0, -0.1f);
+		seta.transform.Translate(0, 0, -0.3f);
 	if (input.GetKey(GLFW_KEY_U))
-		spotLightShape.Translate(0, 0, 0.1f);
+		seta.transform.Translate(0, 0, 0.3f);
+
+	if (input.GetKey(GLFW_KEY_Y))
+		setaScale += 0.02f;
+	if (input.GetKey(GLFW_KEY_R))
+		setaScale -= 0.02f;
+
+	if (input.GetKey(GLFW_KEY_T))
+		setaXRotation += 0.05f;
+	if (input.GetKey(GLFW_KEY_G))
+		setaXRotation -= 0.05f;
+	if (input.GetKey(GLFW_KEY_H))
+		setaYRotation += 0.05f;
+	if (input.GetKey(GLFW_KEY_F))
+		setaYRotation -= 0.05f;
+	
+	seta.transform.Scale(setaScale, setaScale, setaScale);
+	seta.transform.Rotate(setaXRotation, setaYRotation, 0);
 
 	//spriteCube1.Draw();
 

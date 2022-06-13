@@ -88,6 +88,9 @@ private:
 	ShapeCube pointLightShape3{ render };
 	ShapeCube pointLightShape4{ render };
 
+	float setaXRotation = 0;
+	float setaYRotation = 0;
+	float setaScale = 1;
 	Model seta{ "res/seta/mushroom.obj" , render};
 };
 
