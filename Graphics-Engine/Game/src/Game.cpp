@@ -68,7 +68,10 @@ void Game::Update() {
 	if (input.GetKey(GLFW_KEY_U))
 		spotLightShape.Translate(0, 0, 0.1f);
 
-	spriteCube1.Draw();
+	//spriteCube1.Draw();
+
+	seta.Draw();
+
 	spotLightShape.Draw();
 	playerShape.Draw();
 	pointLightShape1.Draw();

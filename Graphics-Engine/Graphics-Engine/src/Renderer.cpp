@@ -164,6 +164,28 @@ void Renderer::SetSpotLight(SpotLightData& _spotLight) {
 	spotLight->lightIsSet = 1;
 }
 
+void Renderer::DrawMesh(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap, std::vector<Texture> textures) {
+	glUniform1i(typeLocation, 1);
+
+	DrawLights();
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, textures[0].texture);
+
+	glUniformMatrix4fv(modelLocation, 1, GL_FALSE,
+		glm::value_ptr(model));
+
+	glUniform4fv(glGetUniformLocation(program, "material.color"), 1, &lightingMap.color[0]);
+	glUniform3fv(glGetUniformLocation(program, "material.ambient"), 1, &lightingMap.ambient[0]);
+	glUniform1f(glGetUniformLocation(program, "material.shininess"), lightingMap.shininess);
+
+	glUniform3fv(viewPosLocation, 1, &internalCamera.cameraPos[0]);
+
+	glBindVertexArray(vao);
+	glDrawElements(GL_TRIANGLES, indexAmount, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
+}
+
 void Renderer::DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap) {
 	glUniform1i(typeLocation, 1);
 	

@@ -87,6 +87,8 @@ private:
 	ShapeCube pointLightShape2{ render };
 	ShapeCube pointLightShape3{ render };
 	ShapeCube pointLightShape4{ render };
+
+	Model seta{ "res/seta/mushroom.obj" , render};
 };
 
 #endif // !GAME_H

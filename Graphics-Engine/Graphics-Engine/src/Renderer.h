@@ -128,6 +128,8 @@ public:
 
 	void CreateProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 	
+	void DrawMesh(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap, std::vector<Texture> textures);
+
 	void DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap);
 
 	void Draw(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, Material& material);

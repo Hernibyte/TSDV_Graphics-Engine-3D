@@ -17,6 +17,8 @@ struct ENGINE_API Texture {
 	int height;
 	int nrChannels;
 	TextureType type;
+	std::string path;
+	std::string txType;
 };
  
 class TextureImporter {
