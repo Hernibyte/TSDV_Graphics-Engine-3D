@@ -96,6 +96,19 @@ struct ENGINE_API InternalCamera {
 	float pitch = 0.0f;
 };
 
+#define MAX_BONE_INFLUENCE 4
+
+struct ENGINE_API Vertex {
+	glm::vec3 position;
+	glm::vec3 normal;
+	glm::vec2 texCoord;
+	glm::vec3 tangent;
+	glm::vec3 bitangent;
+
+	int m_BoneIDs[MAX_BONE_INFLUENCE];
+	float m_Weights[MAX_BONE_INFLUENCE];
+};
+
 enum class ENGINE_API ProjectionType {
 	Perspective,
 	Orthographic
@@ -128,6 +141,14 @@ public:
 
 	void CreateProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 	
+	void SetupMesh(
+		unsigned int &vao,
+		unsigned int &vbo,
+		unsigned int &ebo,
+		std::vector<Vertex>& vertices,
+		std::vector<unsigned int>& indices
+	);
+
 	void DrawMesh(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap, std::vector<Texture> textures);
 
 	void DrawTexture(unsigned int& vao, unsigned int indexAmount, glm::mat4 model, LightingMap& lightingMap);

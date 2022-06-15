@@ -10,19 +10,6 @@
 #include <string>
 #include <vector>
 
-#define MAX_BONE_INFLUENCE 4
-
-struct ENGINE_API Vertex {
-	glm::vec3 position;
-	glm::vec3 normal;
-	glm::vec2 texCoord;
-	glm::vec3 tangent;
-	glm::vec3 bitangent;
-	
-	int m_BoneIDs[MAX_BONE_INFLUENCE];
-	float m_Weights[MAX_BONE_INFLUENCE];
-};
-
 class ENGINE_API Mesh : public Entity {
 public:
 	Mesh(std::vector<Vertex> vertices,
