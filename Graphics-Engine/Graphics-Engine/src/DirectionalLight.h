@@ -16,6 +16,8 @@ public:
 		glm::vec3 specular
 	);
 
+	void IsSet(int value);
+
 	void SetDirection(float x, float y, float z);
 
 	void SetAmbient(float x, float y, float z);

@@ -18,6 +18,10 @@ DirectionalLight::DirectionalLight(
 	data.specular = specular;
 }
 
+void DirectionalLight::IsSet(int value) {
+	data.lightIsSet = value;
+}
+
 void DirectionalLight::SetDirection(float x, float y, float z) {
 	data.direction = glm::vec3{ x, y, z };
 }

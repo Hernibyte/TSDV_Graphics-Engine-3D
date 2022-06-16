@@ -20,6 +20,8 @@ public:
 		glm::vec3 specular
 	);
 
+	void IsSet(int value);
+
 	void SetPosition(float x, float y, float z);
 
 	void SetConstant(float constant);

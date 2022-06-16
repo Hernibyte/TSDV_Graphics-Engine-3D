@@ -15,6 +15,9 @@ void Game::Start() {
 		3.8f
 	);
 
+	spriteCube1.SetPosition(5, 0, 0);
+	nose.transform.Scale(100, 100, 100);
+
 	pointLightShape1.SetPosition(0.7f, 0.2f, 2.0f);
 	pointLightShape2.SetPosition(2.3f, -3.3f, -4.0f);
 	pointLightShape3.SetPosition(-4.0f, 2.0f, -12.0f);
@@ -94,9 +97,20 @@ void Game::Update() {
 	seta.transform.Scale(setaScale, setaScale, setaScale);
 	seta.transform.Rotate(setaXRotation, setaYRotation, 0);
 
-	//spriteCube1.Draw();
+	spriteCube1.Draw();
 
+	nose.Draw();
 	seta.Draw();
+
+	if (input.GetKey(GLFW_KEY_C))
+		spotLight.IsSet(1);
+	else
+		spotLight.IsSet(0);
+
+	if (input.GetKey(GLFW_KEY_X))
+		dirLight.IsSet(0);
+	else
+		dirLight.IsSet(1);
 
 	spotLightShape.Draw();
 	playerShape.Draw();

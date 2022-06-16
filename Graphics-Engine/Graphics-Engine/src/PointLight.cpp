@@ -28,6 +28,10 @@ PointLight::PointLight (
 	data.specular = specular;
 }
 
+void PointLight::IsSet(int value) {
+	data.lightIsSet = value;
+}
+
 void PointLight::SetPosition(float x, float y, float z) {
 	data.position = glm::vec3{ x, y, z };
 }

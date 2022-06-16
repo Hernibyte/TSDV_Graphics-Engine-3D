@@ -31,6 +31,10 @@ SpotLight::SpotLight(
 	data.specular = specular;
 }
 
+void SpotLight::IsSet(int value) {
+	data.lightIsSet = value;
+}
+
 void SpotLight::SetPosition(float x, float y, float z) {
 	data.position = glm::vec3{ x, y, z };
 }
