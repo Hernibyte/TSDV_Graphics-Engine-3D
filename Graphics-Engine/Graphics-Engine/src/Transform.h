@@ -20,8 +20,22 @@ public:
 		mylocalScale = glm::vec3();
 	}
 
+	inline bool HasParent() {
+		return hasParent;
+	}
+
 	inline glm::mat4 Model() {
+		if (hasParent) return parentModel * model;
 		return model;
+	}
+
+	inline void SetParent(glm::mat4 model) {
+		parentModel = model;
+		hasParent = true;
+	}
+
+	inline void UnBindParent() {
+		hasParent = false;
 	}
 
 	inline void Rotate(float x, float y, float z) {
@@ -94,6 +108,9 @@ private:
 	}
 
 	glm::mat4 model;
+
+	bool hasParent = false;
+	glm::mat4 parentModel;
 
 	glm::mat4 translate;
 	glm::mat4 rotatex;

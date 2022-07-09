@@ -92,7 +92,7 @@ private:
 	float setaYRotation = 0;
 	float setaScale = 1;
 	Model seta{ "res/seta/mushroom.obj" , render};
-	Model nose{ "res/nose/pico.obj" , render};
+	//Model nose{ "res/nose/pico.obj" , render};
 };
 
 #endif // !GAME_H

@@ -16,9 +16,10 @@ void Game::Start() {
 	);
 
 	spriteCube1.SetPosition(5, 0, 0);
-	nose.transform.Scale(100, 100, 100);
+	//nose.transform.Scale(100, 100, 100);
 
 	pointLightShape1.SetPosition(0.7f, 0.2f, 2.0f);
+
 	pointLightShape2.SetPosition(2.3f, -3.3f, -4.0f);
 	pointLightShape3.SetPosition(-4.0f, 2.0f, -12.0f);
 	pointLightShape4.SetPosition(0.0f, 0.0f, -3.0f);
@@ -38,6 +39,8 @@ void Game::Start() {
 
 void Game::Update() {
 	camera.TargetThirdPerson(playerShape, 0.8f, 6.f);
+
+	seta.transform.SetParent(playerShape.transform.Model());
 
 	spotLight.SetPosition (
 		spotLightShape.transform.myposition.x,
@@ -99,7 +102,7 @@ void Game::Update() {
 
 	spriteCube1.Draw();
 
-	nose.Draw();
+	//nose.Draw();
 	seta.Draw();
 
 	if (input.GetKey(GLFW_KEY_C))
