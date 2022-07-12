@@ -15,6 +15,8 @@ void Game::Start() {
 		3.8f
 	);
 
+	seta.transform.SetParent(&playerShape.transform);
+
 	spriteCube1.SetPosition(5, 0, 0);
 	//nose.transform.Scale(100, 100, 100);
 
@@ -39,8 +41,6 @@ void Game::Start() {
 
 void Game::Update() {
 	camera.TargetThirdPerson(playerShape, 0.8f, 6.f);
-
-	seta.transform.SetParent(playerShape.transform.Model());
 
 	spotLight.SetPosition (
 		spotLightShape.transform.myposition.x,

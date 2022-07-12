@@ -25,12 +25,12 @@ public:
 	}
 
 	inline glm::mat4 Model() {
-		if (hasParent) return parentModel * model;
+		if (hasParent) return parentTransform->Model() * model;
 		return model;
 	}
 
-	inline void SetParent(glm::mat4 model) {
-		parentModel = model;
+	inline void SetParent(Transform* parent) {
+		parentTransform = parent;
 		hasParent = true;
 	}
 
@@ -110,7 +110,7 @@ private:
 	glm::mat4 model;
 
 	bool hasParent = false;
-	glm::mat4 parentModel;
+	Transform* parentTransform;
 
 	glm::mat4 translate;
 	glm::mat4 rotatex;
