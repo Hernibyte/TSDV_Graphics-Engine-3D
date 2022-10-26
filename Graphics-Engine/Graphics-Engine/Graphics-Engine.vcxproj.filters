@@ -76,6 +76,9 @@
     <Filter Include="Source\Model">
       <UniqueIdentifier>{506b1164-49d9-44b8-8078-7757e9fd0da8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Tools\ModelImporter">
+      <UniqueIdentifier>{18df448e-0dea-4d2f-9f52-a6dcb0e94d60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -147,6 +150,9 @@
     <ClInclude Include="src\Model.h">
       <Filter>Source\Model</Filter>
     </ClInclude>
+    <ClInclude Include="src\ModelImporter.h">
+      <Filter>Source\Tools\ModelImporter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window.cpp">
@@ -199,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="src\Model.cpp">
       <Filter>Source\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ModelImporter.cpp">
+      <Filter>Source\Tools\ModelImporter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
